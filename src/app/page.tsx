@@ -60,6 +60,12 @@ export default function Home() {
         setFilteredProducts(filtered);
     };
 
+    if (!products.length) {
+        return <div className={"w-full flex-grow flex justify-center content-center"}>
+            <span className="loading loading-spinner loading-lg"></span>
+        </div>
+    }
+
     return (
         <div className="container mx-auto p-4">
             <SearchAndFilter searchQuery={searchQuery} handleSearch={handleSearch}
