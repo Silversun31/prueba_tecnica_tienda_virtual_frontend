@@ -23,7 +23,7 @@ export default function CartPage() {
     return (
         <div className="container mx-auto p-4">
             <h1 className="text-2xl font-bold mb-4">Carrito de Compras</h1>
-            <div className={"flex md:flex-row flex-col-reverse gap-2"}>
+            <div className={"grid sm:grid-cols-[1fr_0.2fr] grid-cols-1 gap-2"}>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                     {cart.length ? cart.map((product) => (
                         <div
@@ -64,7 +64,11 @@ export default function CartPage() {
                         </div>
                     )) : "No posee items en su carrito"}
                 </div>
-                <div className={"flex flex-col justify-between h-full"}>
+                <div className={"flex flex-col h-full"}>
+                    <div className="text-right font-bold text-xl mt-4">
+                        Total de su compra:
+                        ${cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
+                    </div>
                     <button onClick={clearCart} className="btn btn-error mb-4 float-right">Limpiar Carrito</button>
                     {!paymentSuccess && (
                         <button onClick={handlePayment} className="btn btn-primary mt-4 float-right"
@@ -77,12 +81,6 @@ export default function CartPage() {
             {paymentSuccess && <div className="text-center text-green-500 font-bold mt-4">
                 ¡Pago realizado con éxito!
             </div>}
-
-
-            <div className="text-right font-bold text-xl mt-4">
-                Total de su compra:
-                ${cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
-            </div>
         </div>
     );
 }
