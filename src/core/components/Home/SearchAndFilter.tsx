@@ -1,12 +1,12 @@
-import React from "react";
+import React, {ChangeEventHandler} from "react";
 import {SearchProducts} from "@/core/components/SearchProducts";
 import {FilterProducts} from "@/core/components/FilterProducts";
 
 interface SearchAndFilterProps {
     searchQuery: string
-    handleSearch: Function
+    handleSearch: ChangeEventHandler<HTMLInputElement>
     selectedCategory: string
-    handleCategoryChange: Function
+    handleCategoryChange: ChangeEventHandler<HTMLSelectElement>
     categories: string[]
 }
 
