@@ -2,20 +2,24 @@ import axios, {AxiosResponse} from "axios";
 import {API_URL} from "../../../app.config";
 
 export default class BaseApiService {
-    private readonly BASE_URL: string = API_URL;
+    protected readonly BASE_URL: string = API_URL;
 
 
-    private encrypt(data: string): string {
+    protected encrypt(data: string): string {
         return data;
     }
 
-    private async connect(resource: string, method: 'post' = 'post', data: any): Promise<AxiosResponse<any>> {
-        return await axios.post(`${this.BASE_URL}${resource}`, JSON.stringify(data), {
+    protected async connect<T>(resource: string, method: 'get' | 'post' | 'put' | 'delete' | 'patch' = 'post', data?: any): Promise<AxiosResponse<T>> {
+        const config = {
+            method,
+            url: `${this.BASE_URL}${resource}`,
             headers: {
                 'Accept': '*/*',
                 'Content-Type': 'application/json'
-            }
-        });
+            },
+            data: JSON.stringify(this.encrypt(data))
+        };
+        return axios(config);
     }
 
 }
