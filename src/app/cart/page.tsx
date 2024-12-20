@@ -9,7 +9,7 @@ export default function CartPage() {
     const {increaseProductQuantity, decreaseProductQuantity, removeProduct, clearCart} = useCart();
     const [isProcessing, setIsProcessing] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
-    const {NotificationSrv} = useNotificationService()
+    const NotificationSrv = useNotificationService()
 
     const handlePayment = () => {
         setIsProcessing(true);
