@@ -7,9 +7,9 @@ const COOKIE_NAME = 'shopping_cart';
 
 interface UseCartReturn {
     cart: CartProduct[];
-    addProduct: (product: BaseCartProduct) => void;
+    addProduct: (product: BaseCartProduct, quantity?: number) => void;
     removeProduct: (productId: number) => void;
-    updateProductQuantity: (productId: string, quantity: number) => void;
+    updateProductQuantity: (productId: number, quantity: number) => void;
     clearCart: () => void;
 }
 

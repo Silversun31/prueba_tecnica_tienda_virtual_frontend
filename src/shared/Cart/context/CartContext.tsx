@@ -2,7 +2,10 @@ import React, {createContext, SetStateAction, useState} from "react";
 import {CartProduct} from "@/shared/Cart/types";
 
 
-export const CartContext = createContext<{ cart: CartProduct[], setCart: React.Dispatch<SetStateAction<CartProduct[]>> }>({
+export const CartContext = createContext<{
+    cart: CartProduct[],
+    setCart: React.Dispatch<SetStateAction<CartProduct[]>>
+}>({
     cart: [],
     setCart: () => {
     },
@@ -11,7 +14,7 @@ export const CartContext = createContext<{ cart: CartProduct[], setCart: React.D
 export function CartContextProvider({children}: {
     children?: React.ReactNode
 }) {
-    const [cart, setCart] = useState([])
+    const [cart, setCart] = useState([] as CartProduct[])
 
     return (
         <CartContext.Provider

@@ -2,9 +2,9 @@ import { useCallback } from 'react';
 import Cookies from 'js-cookie';
 
 interface UseCookiesReturn {
-    setCookie: (name: string, data: any, options?: Cookies.Options) => void;
+    setCookie: (name: string, data: any, options?: Cookies.CookieAttributes) => void;
     getCookie: (name: string) => any | null;
-    removeCookie: (name: string, options?: Cookies.Options) => void;
+    removeCookie: (name: string, options?: Cookies.CookieAttributes) => void;
 }
 
 /**
@@ -23,7 +23,7 @@ export const useCookies = ():UseCookiesReturn => {
      * @param {any} data - The data to store in the cookie.
      * @param {Cookies.Options} [options] - Optional attributes for the cookie.
      */
-    const setCookie = useCallback((name: string, data: any, options?: Cookies.Options) => {
+    const setCookie = useCallback((name: string, data: any, options?: Cookies.CookieAttributes) => {
         const jsonData = JSON.stringify(data);
         Cookies.set(name, jsonData, options);
     }, []);
