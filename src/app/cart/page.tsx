@@ -28,7 +28,8 @@ export default function CartPage() {
                             <h2 className="card-title">
                                 {product.title}
                             </h2>
-                            <p className="text-gray-600">${product.price}</p>
+                            <p className="text-gray-600">${product.price} x {product.quantity} =
+                                ${product.price * product.quantity}</p>
                             <div className="card-actions flex flex-col items-center">
                                 <div className="flex items-center mb-2">
                                     <button onClick={() => decreaseProductQuantity(product.id)}
@@ -46,6 +47,10 @@ export default function CartPage() {
                         </div>
                     </div>
                 )) : "No posee items en su carrito"}
+            </div>
+            <div className="text-right font-bold text-xl mt-4">
+                Total de su compra:
+                ${cart.reduce((total, product) => total + product.price * product.quantity, 0).toFixed(2)}
             </div>
         </div>
     );
