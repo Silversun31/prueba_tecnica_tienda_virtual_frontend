@@ -21,7 +21,7 @@ export default function Home() {
     }, []);
 
     // Handle search functionality
-    const handleSearch = (e) => {
+    const handleSearch = (e: ChangeEvent<HTMLInputElement>) => {
         const query = e.target.value.toLowerCase();
         setSearchQuery(query);
         const filtered = products.filter((product) =>
