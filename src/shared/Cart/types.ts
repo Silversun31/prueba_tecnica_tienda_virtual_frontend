@@ -1,6 +1,6 @@
 export interface BaseCartProduct {
     id: number;
-
+    title: string;
     [key: string]: any;
 }
 
