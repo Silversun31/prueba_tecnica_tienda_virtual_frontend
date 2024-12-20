@@ -1,8 +1,20 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Useful links
+### Public project deployment
+https://prueba-tecnica-tecopo.vercel.app/
+### Public git repository
+https://github.com/Silversun31/prueba_tecnica_tienda_virtual_frontend
+
+## This project is online on [Vercel](https://prueba-tecnica-tecopo.vercel.app/)  
+  
 
 ## Getting Started
 
-First, run the development server:
+First, install the dependencies:
+```bash
+npm install
+```
+
+Then, run the development server:
 
 ```bash
 npm run dev
