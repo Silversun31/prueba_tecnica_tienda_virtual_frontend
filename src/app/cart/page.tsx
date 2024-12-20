@@ -2,12 +2,14 @@
 import {useContext, useState} from "react";
 import {CartContext} from "@/shared/Cart/context/CartContext";
 import {useCart} from "@/shared/Cart/useCart";
+import useNotificationService from "@/services/Notification";
 
 export default function CartPage() {
     const {cart} = useContext(CartContext);
     const {increaseProductQuantity, decreaseProductQuantity, removeProduct, clearCart} = useCart();
     const [isProcessing, setIsProcessing] = useState(false);
     const [paymentSuccess, setPaymentSuccess] = useState(false);
+    const {NotificationSrv} = useNotificationService()
 
     const handlePayment = () => {
         setIsProcessing(true);
@@ -51,7 +53,10 @@ export default function CartPage() {
                                                 className="btn btn-sm btn-outline">+
                                         </button>
                                     </div>
-                                    <button onClick={() => removeProduct(product.id)}
+                                    <button onClick={() => {
+                                        removeProduct(product.id)
+                                        NotificationSrv.notify('Producto eliminado del carrito', {type: 'success'});
+                                    }}
                                             className="btn btn-sm btn-danger">Eliminar
                                     </button>
                                 </div>
