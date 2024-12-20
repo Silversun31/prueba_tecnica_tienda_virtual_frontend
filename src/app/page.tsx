@@ -1,6 +1,5 @@
 'use client'
 import {useEffect, useState} from "react";
-import {APP_NAME} from "../../app.config";
 import useNotificationService from "@/services/Notification";
 import useProductApiService from "@/services/api/ProductApiService";
 
@@ -36,7 +35,6 @@ export default function Home() {
 
     return (
         <div className="container mx-auto p-4">
-            <h1 className="text-3xl font-bold text-center mb-6">{APP_NAME}</h1>
             <input
                 type="text"
                 placeholder="Buscar productos..."
@@ -44,7 +42,6 @@ export default function Home() {
                 onChange={handleSearch}
                 className="input input-bordered w-full mb-4"
             />
-
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                 {filteredProducts.map((product) => (
                     <div
@@ -52,22 +49,22 @@ export default function Home() {
                         className="card shadow-lg transition"
                     >
                         <figure>
-                        <img
-                            src={product.image}
-                            alt={product.title}
+                            <img
+                                src={product.image}
+                                alt={product.title}
                                 className="h-40 object-contain"
-                        />
+                            />
                         </figure>
                         <div className="card-body items-center text-center">
                             <h2 className="card-title">
-                            {product.title}
-                        </h2>
+                                {product.title}
+                            </h2>
                             <p className="text-gray-600">${product.price}</p>
                             <div className="card-actions">
                                 <button className="btn btn-primary">
-                            Agregar al carrito
-                        </button>
-                    </div>
+                                    Agregar al carrito
+                                </button>
+                            </div>
                         </div>
                     </div>
                 ))}

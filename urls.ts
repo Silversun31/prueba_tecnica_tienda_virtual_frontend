@@ -2,8 +2,8 @@
 // import {settingsUrls} from "@/src/app/settings/urls";
 
 
-// export const urlpatterns = {
-//     'index': '/',
+export const urlpatterns = {
+    'index': '/',
 //     ...projectUrls,
 //     ...settingsUrls
-// }
+}
