@@ -1,8 +1,8 @@
 'use client'
 import {useEffect, useState} from "react";
-import useProductApiService from "@/services/api/ProductApiService";
-import useNotificationService from "@/services/Notification";
 import {APP_NAME} from "../../app.config";
+import useNotificationService from "@/services/Notification";
+import useProductApiService from "@/services/api/ProductApiService";
 
 export default function Home() {
     const [products, setProducts] = useState<Product[]>([]);
