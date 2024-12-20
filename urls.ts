@@ -1,9 +1,6 @@
-// import {projectUrls} from "@/src/app/project/urls";
-// import {settingsUrls} from "@/src/app/settings/urls";
-
+import productUrls from "@/app/product/urls";
 
 export const urlpatterns = {
     'index': '/',
-//     ...projectUrls,
-//     ...settingsUrls
+    ...productUrls
 }

@@ -1,5 +1,7 @@
 import React from 'react';
 import {AddToCartButton} from "@/core/components/Cart/AddToCartButton";
+import Link from "next/link";
+import {urlpatterns} from "../../../urls";
 
 interface ProductCardProps {
     product: Product;
@@ -18,9 +20,9 @@ const ProductCard: React.FC<ProductCardProps> = ({product}) => {
                 />
             </figure>
             <div className="card-body items-center text-center">
-                <h2 className="card-title">
+                <Link href={`${urlpatterns["product-base"]}/${product.id}`} className="card-title">
                     {product.title}
-                </h2>
+                </Link>
                 <p className="text-gray-600">${product.price}</p>
                 <div className="card-actions">
                     <AddToCartButton product={product}/>

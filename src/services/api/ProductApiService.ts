@@ -1,5 +1,9 @@
 import BaseApiService from "@/services/api/BaseApiService";
-import {ApiProductGetAllResponse, ApiProductGetCategoriesResponse} from "@/models/api/ProductApiService";
+import {
+    ApiProductGetAllResponse,
+    ApiProductGetByIdResponse,
+    ApiProductGetCategoriesResponse
+} from "@/models/api/ProductApiService";
 
 export class ProductApiService extends BaseApiService {
     protected readonly SERVICE_URL: string = '/products';
@@ -12,6 +16,11 @@ export class ProductApiService extends BaseApiService {
     async getCategories() {
         const resource = `${this.SERVICE_URL}/categories`
         return await this.connect<ApiProductGetCategoriesResponse>(resource, 'get')
+    }
+
+    async getById(id: number) {
+        const resource = `${this.SERVICE_URL}/${id}`
+        return await this.connect<ApiProductGetByIdResponse>(resource, 'get')
     }
 }
 
