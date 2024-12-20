@@ -10,7 +10,7 @@ export const NavBar = () => {
                 <Link href={urlpatterns['index']} className="btn btn-ghost text-xl">{APP_NAME}</Link>
             </div>
             <div className="navbar-end">
-                <a className="btn btn-ghost rounded-full"><BsCart3 size={18}/></a>
+                <Link href={urlpatterns['cart-base']} className="btn btn-ghost rounded-full"><BsCart3 size={18}/></Link>
             </div>
         </div>
     );

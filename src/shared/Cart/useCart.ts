@@ -11,6 +11,8 @@ interface UseCartReturn {
     removeProduct: (productId: number) => void;
     updateProductQuantity: (productId: number, quantity: number) => void;
     clearCart: () => void;
+    increaseProductQuantity: (productId: number) => void;
+    decreaseProductQuantity: (productId: number) => void;
 }
 
 /**
@@ -82,6 +84,35 @@ export const useCart = (): UseCartReturn => {
         setCart([]);
         removeCookie(COOKIE_NAME);
     }, [removeCookie]);
+    /**
+     * Increases the quantity of a product in the cart by 1.
+     *
+     * @param {number} productId - The ID of the product to increase the quantity.
+     */
+    const increaseProductQuantity = useCallback((productId: number) => {
+        setCart((prevCart) => prevCart.map(product =>
+            product.id === productId ? {...product, quantity: product.quantity + 1} : product
+        ));
+    }, []);
 
-    return {cart, addProduct, removeProduct, updateProductQuantity, clearCart};
+    /**
+     * Decreases the quantity of a product in the cart by 1.
+     * If the quantity reaches 0, the product is removed from the cart.
+     *
+     * @param {number} productId - The ID of the product to decrease the quantity.
+     */
+    const decreaseProductQuantity = useCallback((productId: number) => {
+        setCart((prevCart) => prevCart.map(product =>
+            product.id === productId ? {...product, quantity: product.quantity - 1} : product
+        ).filter(product => product.quantity > 0));
+    }, []);
+    return {
+        cart,
+        addProduct,
+        removeProduct,
+        updateProductQuantity,
+        clearCart,
+        increaseProductQuantity,
+        decreaseProductQuantity
+    };
 };
