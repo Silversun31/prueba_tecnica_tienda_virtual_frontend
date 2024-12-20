@@ -29,7 +29,7 @@ export default function ProductDetail() {
 
     return (
         <div className="container mx-auto p-4">
-            <div className="card flex flex-row">
+            <div className="card flex flex-col md:flex-row">
                 <figure className={"flex-1"}>
                     <img
                         src={product.image}
