@@ -2,6 +2,7 @@ import {useCallback, useContext, useEffect} from 'react';
 import {useCookies} from "./hooks/useCookies";
 import {BaseCartProduct, CartProduct} from "@/shared/Cart/types";
 import {CartContext} from "@/shared/Cart/context/CartContext";
+import useNotificationService from "@/services/Notification";
 
 const COOKIE_NAME = 'shopping_cart';
 
@@ -28,6 +29,7 @@ interface UseCartReturn {
 export const useCart = (): UseCartReturn => {
     const {setCookie, getCookie, removeCookie} = useCookies();
     const {cart, setCart} = useContext(CartContext)
+    const NotificationSrv = useNotificationService()
 
     useEffect(() => {
         const savedCart = getCookie(COOKIE_NAME);
@@ -55,6 +57,7 @@ export const useCart = (): UseCartReturn => {
             }
             return [...prevCart, {...product, quantity}];
         });
+        NotificationSrv.notify(`Producto "${product.title}" agregado al carrito`, {type: 'success'});
     }, []);
     /**
      * Removes a product from the cart by its ID.
@@ -63,6 +66,7 @@ export const useCart = (): UseCartReturn => {
      */
     const removeProduct = useCallback((productId: number) => {
         setCart((prevCart) => prevCart.filter(product => product.id !== productId));
+        NotificationSrv.notify(`Producto eliminado carrito`, {type: 'success'});
     }, []);
 
     /**
@@ -83,6 +87,7 @@ export const useCart = (): UseCartReturn => {
     const clearCart = useCallback(() => {
         setCart([]);
         removeCookie(COOKIE_NAME);
+        NotificationSrv.notify(`Carrito limpiado`, {type: 'success'});
     }, [removeCookie]);
     /**
      * Increases the quantity of a product in the cart by 1.
@@ -104,7 +109,10 @@ export const useCart = (): UseCartReturn => {
     const decreaseProductQuantity = useCallback((productId: number) => {
         setCart((prevCart) => prevCart.map(product =>
             product.id === productId ? {...product, quantity: product.quantity - 1} : product
-        ).filter(product => product.quantity > 0));
+        ).filter(product => {
+            product.quantity == 0 && NotificationSrv.notify(`Producto eliminado del carrito`, {type: 'success'});
+            return product.quantity > 0
+        }));
     }, []);
     return {
         cart,
