@@ -66,7 +66,7 @@ export const useCart = (): UseCartReturn => {
      */
     const removeProduct = useCallback((productId: number) => {
         setCart((prevCart) => prevCart.filter(product => product.id !== productId));
-        NotificationSrv.notify(`Producto eliminado carrito`, {type: 'success'});
+        NotificationSrv.notify(`Producto eliminado del carrito`, {type: 'success'});
     }, []);
 
     /**
@@ -109,10 +109,8 @@ export const useCart = (): UseCartReturn => {
     const decreaseProductQuantity = useCallback((productId: number) => {
         setCart((prevCart) => prevCart.map(product =>
             product.id === productId ? {...product, quantity: product.quantity - 1} : product
-        ).filter(product => {
-            product.quantity == 0 && NotificationSrv.notify(`Producto eliminado del carrito`, {type: 'success'});
-            return product.quantity > 0
-        }));
+        ).filter(product => product.quantity > 0
+        ));
     }, []);
     return {
         cart,
