@@ -1,9 +1,9 @@
 import {capitalizeFirstLetter} from "@/shared/utils";
-import React from "react";
+import React, {ChangeEventHandler} from "react";
 
 interface FilterProductsProps {
     selectedCategory: string
-    handleCategoryChange: Function
+    handleCategoryChange: ChangeEventHandler<HTMLSelectElement>
     categories: string[]
 }
 

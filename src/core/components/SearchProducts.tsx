@@ -1,8 +1,8 @@
-import React from "react";
+import React, {ChangeEventHandler} from "react";
 
 interface SearchProductProps {
     searchQuery: string
-    handleSearch: Function
+    handleSearch: ChangeEventHandler<HTMLInputElement>
 }
 
 export const SearchProducts: React.FC<SearchProductProps> = ({
