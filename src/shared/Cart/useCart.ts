@@ -57,7 +57,7 @@ export const useCart = (): UseCartReturn => {
             }
             return [...prevCart, {...product, quantity}];
         });
-        NotificationSrv.notify(`Producto ${product.title} agregado al carrito`, {type: 'success'});
+        NotificationSrv.notify(`Producto "${product.title}" agregado al carrito`, {type: 'success'});
     }, []);
     /**
      * Removes a product from the cart by its ID.
