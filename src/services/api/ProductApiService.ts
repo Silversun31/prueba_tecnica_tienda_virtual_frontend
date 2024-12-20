@@ -18,7 +18,7 @@ export class ProductApiService extends BaseApiService {
         return await this.connect<ApiProductGetCategoriesResponse>(resource, 'get')
     }
 
-    async getById(id: number) {
+    async getById(id: string) {
         const resource = `${this.SERVICE_URL}/${id}`
         return await this.connect<ApiProductGetByIdResponse>(resource, 'get')
     }

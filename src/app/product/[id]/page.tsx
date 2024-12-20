@@ -12,7 +12,7 @@ export default function ProductDetail() {
     const params = useParams()
 
     useEffect(() => {
-        ProductApiService.getById(params.id as number)
+        ProductApiService.getById(params.id as string)
             .then((res) => {
                 setProduct(res.data);
             })
