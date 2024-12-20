@@ -28,21 +28,56 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+# Technical Test Document
+## Ecosistema Tecnológico de Puntos de Venta
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+### Requisitos técnicos
+- **Framework**: React
+- **Estilos**: TailwindCSS.
+- **Librerías**: Libre elección para manejar el estado o realizar fetch de datos (opcional).
+- **Versionado**: Subir el código a un repositorio en GitHub.
+- **Despliegue**: Usar una plataforma gratuita como Vercel, Netlify, o Render.
 
-## Learn More
+### Descripción de la prueba
+Desarrollar una tienda online básica con las siguientes pantallas y funcionalidades:
 
-To learn more about Next.js, take a look at the following resources:
+1. **Pantalla de Inicio**
+   - **Requisitos**:
+     - Mostrar una lista de productos con imagen, nombre, precio y un botón "Agregar al carrito".
+     - Los productos deben obtenerse de una API pública (sugerencia: Fake Store API).
+     - Implementar un buscador y/o filtro por categoría.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Pantalla de detalle de producto**
+   - **Requisitos**:
+     - Mostrar información completa del producto seleccionado.
+     - Botón para agregar el producto al carrito.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Carrito de compras**
+   - **Requisitos**:
+     - Mostrar los productos agregados al carrito con su nombre, cantidad y precio total.
+     - Permitir eliminar productos o cambiar la cantidad.
+     - Mostrar el precio total de todos los productos.
 
-## Deploy on Vercel
+4. **Pantalla de confirmación de compra**
+   - **Requisitos**:
+     - Mostrar un resumen del carrito con los datos de la compra.
+     - Permitir simular la "finalización de compra".
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+### Criterios de evaluación
+1. **Organización del código**
+   - Uso de buenas prácticas (estructuración, modularidad, etc.).
+   - Nombres claros para componentes, funciones y variables.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+2. **Diseño y usabilidad**
+   - Interfaz intuitiva y bien diseñada.
+   - Uso correcto de estilos y diseño responsive.
+
+3. **Funcionalidad**
+   - Cumplimiento de todos los requisitos especificados.
+   - Correcto manejo del estado y la comunicación entre componentes.
+
+4. **Despliegue y documentación**
+   - Aplicación desplegada correctamente.
+   - Archivo README que incluya:
+     - Instrucciones para correr el proyecto localmente.
+     - URL de la aplicación desplegada.
