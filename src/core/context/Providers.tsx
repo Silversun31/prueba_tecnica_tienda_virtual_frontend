@@ -2,6 +2,7 @@
 
 import React from 'react';
 import {ApiServicesContextProvider} from "@/core/context/ApiService/ApiServicesContext";
+import {CartContextProvider} from "@/shared/Cart/context/CartContext";
 
 const Providers = ({
                        children,
@@ -10,9 +11,11 @@ const Providers = ({
 }) => {
 
     return (
-        <ApiServicesContextProvider>
-            {children}
-        </ApiServicesContextProvider>
+        <CartContextProvider>
+            <ApiServicesContextProvider>
+                {children}
+            </ApiServicesContextProvider>
+        </CartContextProvider>
     )
 }
 

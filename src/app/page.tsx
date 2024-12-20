@@ -2,6 +2,7 @@
 import {ChangeEvent, useContext, useEffect, useState} from "react";
 import {ApiServicesContext} from "@/core/context/ApiService/ApiServicesContext";
 import useNotificationService from "@/services/Notification";
+import {AddToCartButton} from "@/core/components/Cart/AddToCartButton";
 
 export default function Home() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -60,9 +61,7 @@ export default function Home() {
                             </h2>
                             <p className="text-gray-600">${product.price}</p>
                             <div className="card-actions">
-                                <button className="btn btn-primary">
-                                    Agregar al carrito
-                                </button>
+                                <AddToCartButton product={product}/>
                             </div>
                         </div>
                     </div>
