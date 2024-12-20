@@ -1,25 +1,24 @@
 'use client'
-import {ChangeEvent, useEffect, useState} from "react";
+import {ChangeEvent, useContext, useEffect, useState} from "react";
+import {ApiServicesContext} from "@/core/context/ApiService/ApiServicesContext";
 import useNotificationService from "@/services/Notification";
-import useProductApiService from "@/services/api/ProductApiService";
 
 export default function Home() {
     const [products, setProducts] = useState<Product[]>([]);
     const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
     const [searchQuery, setSearchQuery] = useState("");
-    const ProductApiSrv = useProductApiService()
-    const NotificationSrv = useNotificationService()
+    const {ProductApiService} = useContext(ApiServicesContext)
+    const NotificationService = useNotificationService()
 
     // Fetch products from Fake Store API
     useEffect(() => {
-        ProductApiSrv.getAll()
+        ProductApiService.getAll()
             .then((res) => {
                 setProducts(res.data)
                 setFilteredProducts(res.data)
             })
             .catch((err) => {
-                console.error(err)
-                NotificationSrv.notify(err.message, {type: 'error'})
+                NotificationService.notify(err.message, {type: 'error'})
             });
     }, []);
 
