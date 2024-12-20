@@ -4,7 +4,7 @@ import {BaseCartProduct, CartProduct} from "@/shared/Cart/types";
 import {CartContext} from "@/shared/Cart/context/CartContext";
 import useNotificationService from "@/services/Notification";
 
-export const CART_COOKIE_NAME = 'shopping_cart';
+const COOKIE_NAME = 'shopping_cart';
 
 interface UseCartReturn {
     cart: CartProduct[];
@@ -32,14 +32,14 @@ export const useCart = (): UseCartReturn => {
     const NotificationSrv = useNotificationService()
 
     useEffect(() => {
-        const savedCart = getCookie(CART_COOKIE_NAME);
+        const savedCart = getCookie(COOKIE_NAME);
         if (savedCart) {
             setCart(savedCart);
         }
     }, []);
 
     useEffect(() => {
-        setCookie(CART_COOKIE_NAME, cart);
+        setCookie(COOKIE_NAME, cart);
     }, [cart]);
 
     /**
@@ -86,7 +86,7 @@ export const useCart = (): UseCartReturn => {
      */
     const clearCart = useCallback(() => {
         setCart([]);
-        removeCookie(CART_COOKIE_NAME);
+        removeCookie(COOKIE_NAME);
         NotificationSrv.notify(`Carrito limpiado`, {type: 'success'});
     }, [removeCookie]);
     /**
